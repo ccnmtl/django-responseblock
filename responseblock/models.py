@@ -37,6 +37,9 @@ class Response(models.Model):
     def __unicode__(self):
         return unicode(self.pageblock())
 
+    def edit_label(self):
+        return "%s: %s" % (self.display_name,str(self.question))
+
     def edit_form(self):
         question_choices = [
             (q.id,"%s%s/%s" % (q.quiz.pageblock().section.get_absolute_url(),
@@ -46,8 +49,10 @@ class Response(models.Model):
 
         class EditForm(forms.Form):
             question = forms.ChoiceField(label="Select Question",
-                                         choices=question_choices)
-        return EditForm(instance=self)
+                                         choices=question_choices,
+                                         initial=self.question.id,
+                                         )
+        return EditForm()
 
     @classmethod
     def add_form(self):
