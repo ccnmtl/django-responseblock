@@ -47,7 +47,7 @@ class Response(models.Model):
         class EditForm(forms.Form):
             question = forms.ChoiceField(label="Select Question",
                                          choices=question_choices)
-        return EditForm()
+        return EditForm(instance=self)
 
     @classmethod
     def add_form(self):
