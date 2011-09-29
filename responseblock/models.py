@@ -19,7 +19,8 @@ def all_questions():
     questions = []
     for qz in quizzes:
         for q in qz.block().question_set.all():
-            yield q
+            if hasattr(q,'quiz'):
+                yield q
 
 class Response(models.Model):
     pageblocks = generic.GenericRelation(PageBlock)
