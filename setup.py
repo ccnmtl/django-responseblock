@@ -27,7 +27,7 @@ from setuptools import setup
 
 setup(
     name="django-responseblock",
-    version="0.1.2",
+    version="0.1.3",
     author="Anders Pearson",
     author_email="anders@columbia.edu",
     url="",

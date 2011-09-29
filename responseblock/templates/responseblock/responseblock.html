@@ -17,6 +17,7 @@
       {% for answer in question.answer_set.all %}
          {% ifanswerin response answer %}
          <li>{{answer.label}}</li>
+	 {% else %}
          {% endifanswerin %}
       {% endfor %}
       </ul>
