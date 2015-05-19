@@ -55,7 +55,7 @@ class Response(models.Model):
         question_choices = [(q.id, "%s%s/%s" %
                              (q.quiz.pageblock().section.get_absolute_url(),
                               q.quiz.pageblock().label,
-                            q.text)) for q in all_questions()]
+                              q.text)) for q in all_questions()]
 
         class AddForm(forms.Form):
             question = forms.ChoiceField(label="Select Question",
