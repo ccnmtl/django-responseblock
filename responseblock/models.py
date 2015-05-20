@@ -2,7 +2,7 @@ from django.db import models
 from pagetree.models import PageBlock, Hierarchy
 from django.contrib.contenttypes import generic
 from django import forms
-from quizblock.models import Question
+from quizblock.models import Quiz, Question
 
 
 def all_questions():
@@ -11,7 +11,8 @@ def all_questions():
         for s in h.get_root().get_descendants():
             for p in s.pageblock_set.all():
                 if (hasattr(p.block(), 'needs_submit') and
-                        p.block().needs_submit()):
+                        p.block().needs_submit() and
+                        p.block()._meta.model == Quiz):
                     quizzes.append(p)
 
     for qz in quizzes:
