@@ -1,0 +1,3 @@
+0.1.6 (2015-05-19)
+==================
+* restrict all_questions() to Quizzes
