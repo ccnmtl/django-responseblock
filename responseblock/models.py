@@ -1,6 +1,6 @@
 from django.db import models
 from pagetree.models import PageBlock, Hierarchy
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericRelation
 from django import forms
 from quizblock.models import Quiz, Question
 
@@ -22,7 +22,7 @@ def all_questions():
 
 
 class Response(models.Model):
-    pageblocks = generic.GenericRelation(PageBlock)
+    pageblocks = GenericRelation(PageBlock)
     question = models.ForeignKey(Question, related_name="question")
     template_file = "responseblock/responseblock.html"
 
